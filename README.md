@@ -1,5 +1,10 @@
 # Tls-certificate-gen
 
+## Create directory 
+```bash
+mkdir certs
+```
+
 ## Generate the private key for your CA-signed certificate
 ```bash
 openssl genrsa -out training.key 4096
@@ -20,3 +25,6 @@ openssl x509 -req -in training.csr \
 -CA training-CA.pem -CAkey training-CA.key -CAcreateserial \
 -out training.crt -days 1825 -sha256 -extfile training.ext
 ```
+## Check the certificate
+```bash
+ls -lrt
