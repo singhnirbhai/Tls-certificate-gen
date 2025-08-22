@@ -20,10 +20,9 @@ CN=todo-https.apps.ocp4.example.com"
 Finally, generate the signed certificate. Notice the use of the -CA and -CAkeyoptions for signing the certificate against the CA. Use the -passin option to reuse the password of the CA. Use the extfile option to define a Subject Alternative
 Name (SAN).
 ```bash
-openssl x509 -req -in training.csr \
--passin file:passphrase.txt \
--CA training-CA.pem -CAkey training-CA.key -CAcreateserial \
--out training.crt -days 1825 -sha256 -extfile training.ext
+openssl req -x509 -newkey rsa:4096 -nodes \
+  -keyout training.key -out training.crt -days 365 \
+  -subj "/CN=Grras.com/O=Grras Org/C=US"
 ```
 ## Check the certificate
 ```bash
